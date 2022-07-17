@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@700&display=swap');
+
+        body {
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+
+        .frame {
+            background-color: #fcfcfc;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 1px 4px 10px 1px #aaa;
+        }
+
+        .frame .frame-header {
+
+            font-family: 'Edu NSW ACT Foundation', cursive;
+            background-image: linear-gradient(to right, #83a4d4, #b6fbff);
+            text-align: center;
+            padding: 8px;
+        }
+
+        .frame .frame-form {
+            padding: 24px;
+        }
+
+        .frame .frame-form input {
+            padding: 10px 12px;
+            margin: 10px 0;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        .frame .frame-form #input-button {
+            background-image: linear-gradient(to right, #83a4d4, #b6fbff);
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 12px 40px;
+        }
+
+        .frame .frame-form #input-button:hover {
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        }
+
+        .frame .frame-result {
+            padding: 0 24px 8px 24px;
+        }
+
+        .frame .frame-result [class*="frame-result-"] {
+            margin: 0 0 16px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="frame">
+            <!-- Header -->
+            <header class="frame-header">
+                <h1>Day2 - Loop & Input</h1>
+            </header>
+
+            <!-- Form -->
+            <div class="frame-form">
+                <form onsubmit="return false" action="">
+                    <div class="input-group">
+                        <label for="number">Nhập một số:</label>
+                        <br>
+                        <input type="number" id="number">
+                    </div>
+
+                    <div class="button-group" style="text-align:center;">
+                        <button type="button" id="input-button" onclick="inputNumber()">Tính toán</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Result -->
+            <div class="frame-result">
+                <hr>
+                <!-- result 1 -->
+                <div class="frame-result-1"></div>
+
+                <!-- result 2 -->
+                <div class="frame-result-2"></div>
+
+                <!-- result 3 -->
+                <div class="frame-result-3"></div>
+
+                <!-- result 4 -->
+                <div class="frame-result-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var countNumberOfEntries = 0;
+
+        // press enter for input instead of pressing the button
+        document.getElementById("number").addEventListener("keyup", function (event) {
+            if (event.code == "Enter") {
+                event.preventDefault();
+                document.getElementById("input-button").click();
+            }
+            console.log("hello")
+        })
+
+        // Check input number
+        function inputNumber() {
+            let number = parseFloat(document.getElementById("number").value);
+            countNumberOfEntries++; // count the number of entries
+
+            checkNumber1(number);
+            checkNumber2(number);
+            printListOfNumber(number);
+            document.getElementsByClassName("frame-result-4")[0].innerHTML = `Bạn đã nhập ${countNumberOfEntries} lần`;
+
+            document.getElementById("number").value = "";
+        }
+
+        // check even, odd, decimal number
+        function checkNumber1(number) {
+            let frameResult1 = document.getElementsByClassName("frame-result-1")[0];
+
+            if (number % 2 == 0) {
+                frameResult1.innerHTML = `Số ${number} là số chẵn`;
+            }
+            else if (number % 2 == 1) {
+                frameResult1.innerHTML = `Số ${number} là số lẻ`;
+            }
+            else {
+                frameResult1.innerHTML = `Số ${number} là số thập phân`;
+            }
+        }
+
+        // check prime number
+        function checkNumber2(number) {
+            let frameResult2 = document.getElementsByClassName("frame-result-2")[0];
+            let isPrime = true;
+
+            for (let i = 2; i <= Math.sqrt(number); i++) {
+                if (number % i == 0)
+                    isPrime = false;
+            }
+
+            if (!isPrime || number <= 1)
+                frameResult2.innerHTML = `Số ${number} không là số nguyên tố`;
+            else
+                frameResult2.innerHTML = `Số ${number} là số nguyên tố`;
+        }
+
+        // print 1 to number. Conversely, print number to 1 if it's negative
+        function printListOfNumber(number) {
+            let frameResult3 = document.getElementsByClassName("frame-result-3")[0];
+            frameResult3.innerHTML = "";
+
+            if (number > 0) {
+                for (let i = 1; i <= number; i++) {
+                    frameResult3.innerHTML += `${i} `;
+                }
+            }
+            else if (number <= 0) {
+                for (let i = number; i <= 1; i++) {
+                    frameResult3.innerHTML += `${i} `;
+                }
+            }
+            else {
+                frameResult3.innerHTML = "List is empty...";
+            }
+        }
+    </script>
+</body>
+
+</html>
