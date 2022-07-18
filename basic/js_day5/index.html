@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@700&display=swap');
+
+        body {
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+
+        input, textarea {
+            width: 100%;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+
+        .icon-required {
+            color: #f00;
+        }
+
+        .frame {
+            background-color: #fcfcfc;
+            max-width: 420px;
+            margin: auto;
+            box-shadow: 1px 4px 10px 1px #aaa;
+        }
+
+        .frame .frame-header {
+
+            font-family: 'Edu NSW ACT Foundation', cursive;
+            background-image: linear-gradient(to right, #83a4d4, #b6fbff);
+            text-align: center;
+            padding: 8px;
+        }
+
+        .frame .frame-form {
+            padding: 24px;
+        }
+
+        .frame .frame-form .input-group {
+            margin: 0 0 10px 0;
+        }
+
+        .frame .frame-form .input-group .gender-group {
+            display: inline-block;
+            font-weight: normal;
+        }
+
+        .frame .frame-form input {
+            padding: 10px 12px;
+            margin: 10px 0;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        .frame .frame-form textarea {
+            padding: 10px 12px;
+            margin: 10px 0;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        .frame .frame-form .error-input {
+            font-weight: normal;
+            color: #f00;
+        }
+
+        .frame .frame-form #input-button {
+            background-image: linear-gradient(to right, #83a4d4, #b6fbff);
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 12px 40px;
+        }
+
+        .frame .frame-form #input-button:hover {
+            box-shadow: 0 0 5px 1px rgb(0 0 0 / 80%);
+        }
+
+        .frame .frame-form #reset-button {
+            background-color: #fa0000af;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 12px 40px;
+        }
+
+        .frame .frame-form #reset-button:hover {
+            box-shadow: 0 0 5px 1px rgb(0 0 0 / 80%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="frame">
+            <!-- Header -->
+            <header class="frame-header">
+                <h1>Day5 - Validate</h1>
+            </header>
+
+            <!-- Form -->
+            <div class="frame-form">
+                <form action="">
+                    <!-- name input -->
+                    <div class="input-group">
+                        <label for="name">Name</label> <span class="icon-required">*</span>
+                        <input type="text" id="name">
+                        <span class="error-input" id="error-name"></span>
+                    </div>
+
+                    <!-- gender input -->
+                    <div class="input-group">
+                        <div>Gender <span class="icon-required">*</span></div>
+                        <div style="text-align:center;">
+                            <div class="gender-group" style="margin-right:16px;">
+                                <input type="radio" id="male" name="gender" style="max-width:fit-content;">
+                                <label for="male">Male</label>
+                            </div>
+                            <div class="gender-group">
+                                <input type="radio" id="female" name="gender" style="max-width:fit-content;">
+                                <label for="female">Female</label>
+                            </div>
+                        </div>
+                        <span class="error-input" id="error-gender"></span>
+                    </div>
+
+                    <!-- address input -->
+                    <div class="input-group">
+                        <label for="address">Address</label> <span class="icon-required">*</span>
+                        <input type="text" id="address">
+                        <span class="error-input" id="error-address"></span>
+                    </div>
+
+                    <!-- email input -->
+                    <div class="input-group">
+                        <label for="email">Email</label> <span class="icon-required">*</span>
+                        <input type="email" id="email">
+                        <span class="error-input" id="error-email"></span>
+                    </div>
+
+                    <!-- password input -->
+                    <div class="input-group">
+                        <label for="password">Password</label> <span class="icon-required">*</span>
+                        <input type="password" id="password">
+                        <span class="error-input" id="error-password"></span>
+                    </div>
+
+                    <!-- hobbies input -->
+                    <div class="input-group">
+                        <label for="hobbies">Hobbies</label>
+                        <textarea id="hobbies" rows="5"></textarea>
+                    </div>
+
+                    <!-- button group -->
+                    <div class="button-group" style="text-align:center;">
+                        <button type="submit" id="input-button" onclick="return checkSignUpForm()">Sign up</button>
+                        <button type="reset" id="reset-button">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // Check sign up form
+        function checkSignUpForm() {
+            // get value from each field input
+            let name = document.getElementById("name").value;
+            let arrGender = document.getElementsByName("gender");
+            let address = document.getElementById("address").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let hobbies = document.getElementById("hobbies").value;
+
+            // flag for valid form
+            let isValidForm = true;
+
+            // check name input - using regex
+            let regex_name = /^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹ]+(?: [A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹ]*)+$/;
+            if(name.length == 0) {
+                document.getElementById("error-name").innerHTML = "Please enter your name";
+                isValidForm = false;
+            }
+            else if(!regex_name.test(name)) {
+                document.getElementById("error-name").innerHTML = "Please enter a valid name";
+                isValidForm = false;
+            }
+            else {
+                document.getElementById("error-name").innerHTML = "";
+            }
+
+            // check gender input
+            let isChecked = false;
+            for(let e of arrGender) {
+                if(e.checked)
+                    isChecked = true;
+            }
+
+            if(!isChecked) {
+                document.getElementById("error-gender").innerHTML = "Please choose a gender";
+                isValidForm = false;
+            }
+            else {
+                document.getElementById("error-gender").innerHTML = "";
+            }
+
+            // check address input
+            if(address.length == 0) {
+                document.getElementById("error-address").innerHTML = "Please enter your address";
+                isValidForm = false;
+            }
+            else {
+                document.getElementById("error-address").innerHTML = "";
+            }
+
+            let regex_email = /^\w+@\w+\.[a-z]+$/;
+            // check email input
+            if(email.length == 0) {
+                document.getElementById("error-email").innerHTML = "Please enter your email";
+                isValidForm = false;
+            }
+            else if(!regex_email.test(email)) {
+                document.getElementById("error-email").innerHTML = "Please enter a valid email";
+                isValidForm = false;
+            }
+            else {
+                document.getElementById("error-email").innerHTML = "";
+            }
+
+            // check password input
+            if(password.length == 0) {
+                document.getElementById("error-password").innerHTML = "Please enter a password";
+                isValidForm = false;
+            }
+            else if(password.length < 8) {
+                document.getElementById("error-password").innerHTML = "Your password must contain 8 characters";
+                isValidForm = false;
+            }
+            else {
+                document.getElementById("error-password").innerHTML = "";
+            }
+
+            // Check flag for valid form
+            if(!isValidForm) {
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+
+</html>
