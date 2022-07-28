@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form create</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="frame-form">
+            <!-- Header -->
+            <header class="frame-form-header">
+                <h2>Create</h2>
+            </header>
+
+            <!-- Form -->
+            <div class="frame-form-content">
+                <form onsubmit="return checkForm()" action="api/create_new.php" method="post">
+                    <!-- Input title -->
+                    <div class="input-group">
+                        <label for="title">Title</label> <span class="icon-required">*</span>
+                        <input type="text" name="title" id="title">
+                        <span id="error-title" class="error"></span>
+                    </div>
+
+                    <!-- Input content -->
+                    <div class="input-group">
+                        <label for="content">Content</label> <span class="icon-required">*</span>
+                        <textarea name="content" id="content" rows="10"></textarea>
+                        <span id="error-content" class="error"></span>
+                    </div>
+                    
+                    <!-- Input link image -->
+                    <div class="input-group">
+                        <label for="link-image">Link image</label> <span class="icon-required">*</span>
+                        <input type="text" name="link-image" id="link-image">
+                        <span id="error-link-image" class="error"></span>
+                    </div>
+
+                    <!-- button group -->
+                    <div class="button-group" style="text-align:center;">
+                        <button type="submit" id="input-button">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

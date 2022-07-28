@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@700&display=swap');
+
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Edu NSW ACT Foundation', cursive;
+}
+
+input,
+textarea {
+    width: 100%;
+}
+
+/* form_create.html */
+
+.icon-required {
+    color: #f00;
+}
+
+.frame-form {
+    background-color: #fcfcfc;
+    max-width: 420px;
+    margin: auto;
+    box-shadow: 1px 4px 10px 1px #aaa;
+}
+
+.frame-form .frame-form-header {
+    font-family: 'Edu NSW ACT Foundation', cursive;
+    background-image: linear-gradient(to right, #83a4d4, #b6fbff);
+    text-align: center;
+    padding: 8px;
+}
+
+.frame-form .frame-form-content {
+    padding: 24px;
+}
+
+.frame-form .frame-form-content .input-group {
+    margin: 0 0 14px 0;
+}
+
+.frame-form .frame-form-content input,
+.frame-form .frame-form-content textarea {
+    padding: 10px 12px;
+    margin: 10px 0;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+.frame-form .frame-form-content .error {
+    color: red;
+    font-size: 14px;
+}
+
+.frame-form .frame-form-content #input-button {
+    background-image: linear-gradient(to right, #83a4d4, #b6fbff);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 40px;
+}
+
+.frame-form .frame-form-content #input-button:hover {
+    box-shadow: 0 0 5px 1px rgb(0 0 0 / 80%);
+}
+
+.display {
+    display: none;
+    background-color: #78ffb9;
+    width: 400px;
+    margin: auto;
+    border-radius: 12px;
+}
+
+.display #result {
+    text-align: center;
+    padding: 20px;
+}
+
+/* index.php */
+.frame-table {
+    background-color: #fff;
+    color: #57596b;
+    max-width: 80%;
+    border: 2px solid lightgrey;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.frame-table .frame-table-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid lightgray;
+}
+
+.frame-table .frame-table-header .frame-table-brand {
+    margin: 0 16px;
+}
+
+.frame-table .frame-table-header .frame-table-brand .pill {
+    background-color: #e9e9f5;
+    font-size: 14px;
+    border-radius: 6px;
+    padding: 3px 6px;
+}
+
+.frame-table .frame-table-header .frame-table-function {
+    display: flex;
+    align-items: center;
+    margin: 0 16px;
+}
+
+.frame-table .frame-table-header .frame-table-function .input-button{
+    width: 100px;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    transition: all .2s;
+}
+
+.frame-table .frame-table-header .frame-table-function .input-button:hover {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #222;
+}
+
+.frame-table .frame-table-header .frame-table-function .search-input{
+    width: 150px;
+    background-color: #eee; 
+    border: none;
+    border-radius: 6px;
+    margin-right: 10px;
+    padding: 8px 14px;
+}
+
+.frame-table .frame-table-content table {
+    min-width: 100%;
+    border-collapse: collapse;
+}
+
+.frame-table .frame-table-content tr:nth-child(even) {
+    background-color: #e9e9f533;
+}
+
+.frame-table .frame-table-content th {
+    color: #62657a;
+    padding: 10px 12px;
+}
+
+.frame-table .frame-table-content .table .table-groups-button i {
+    margin-right: 12px;
+    font-size: 18px;
+}
+
+.frame-table .frame-table-footer {
+    display: flex;
+    justify-content: end;
+}
+
+.frame-table .frame-table-footer .pagination {
+    display: flex;
+    margin: 20px 16px;
+}
+
+.frame-table .frame-table-footer .pagination a {
+    border-radius: 5px;
+    color: #000000bb;
+    margin: 0 1px;
+    padding: 6px 12px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+.frame-table .frame-table-footer .pagination a.actived {
+    background-color: #e9e9f5;
+    font-weight: bold;
+}
+
+.frame-table .frame-table-footer .pagination a:hover:not(.actived) {
+    background-color: #e9e9f588;
+}
+
+.frame-table .frame-table-footer .pagination a.disabled {
+    pointer-events: none;
+    color: #00000066;
+}

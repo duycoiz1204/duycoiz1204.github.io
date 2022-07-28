@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@700&display=swap');
+
+        body {
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+
+        .icon-required {
+            color: #f00;
+        }
+
+        .frame {
+            background-color: #fcfcfc;
+            max-width: 420px;
+            margin: auto;
+            box-shadow: 1px 4px 10px 1px #aaa;
+        }
+
+        .frame .frame-header {
+
+            font-family: 'Edu NSW ACT Foundation', cursive;
+            background-image: linear-gradient(to right, #83a4d4, #b6fbff);
+            text-align: center;
+            padding: 8px;
+        }
+
+        .frame .frame-content {
+            padding: 24px;
+        }
+
+        .frame .frame-content .input-group {
+            margin: 0 0 10px 0;
+        }
+
+        .frame .frame-content input {
+            padding: 10px 12px;
+            margin: 10px 0;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        .frame .frame-content #input-button {
+            background-image: linear-gradient(to right, #83a4d4, #b6fbff);
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 12px 40px;
+        }
+
+        .frame .frame-content #input-button:hover {
+            box-shadow: 0 0 5px 1px rgb(0 0 0 / 80%);
+        }
+
+        .display {
+            display: none;
+            background-color: #78ffb9;
+            width: 400px;
+            margin: auto;
+            border-radius: 12px;
+        }
+
+        .display #result {
+            text-align: center;
+            padding: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="frame">
+            <!-- Header -->
+            <header class="frame-header">
+                <h1>Day6 - DOM & BOM - L2</h1>
+            </header>
+
+            <!-- Form -->
+            <div class="frame-content">
+                <form action="">
+                    <!-- input -->
+                    <div class="input-group">
+                        <label for="link">Enter a link to get ID/username</label> <span class="icon-required">*</span>
+                        <input type="link" id="link" placeholder="https://www.facebook.com/j2teamnnl/">
+                    </div>
+
+                    <!-- button group -->
+                    <div class="button-group" style="text-align:center;">
+                        <button type="button" id="input-button" onclick="analysisLink()">Analysis</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Result display -->
+        <div class="display">
+            <p id="result"></p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function analysisLink() {
+            let link = document.getElementById("link").value;
+            let regexID = /^https:\/{2}www\.facebook\.com\/(?:groups\/|profile\.php\?id=|)([a-z0-9\.]*)(?:\/$|$)/;
+            let regexMatch = link.match(regexID);
+            let result = document.getElementById("result");
+
+            console.log(regexMatch)
+            if(regexMatch == null) {
+                result.innerHTML = "Không hợp lệ!";
+            }
+            else {
+                result.innerHTML = `ID của bạn là ${regexMatch[1]}`;
+                document.getElementsByClassName("display")[0].style.display = "block";
+            }
+        }
+    </script>
+</body>
+
+</html>
